@@ -13,4 +13,12 @@ module.exports.loop = function () {
     
     TicketSystem.CreateTicket(ticket);
     
+    ticket = TicketSystem.GetTicket(ticketNumber);
+    
+    TicketSystem.IncreasePriority(ticketNumber);
+    TicketSystem.DecreasePriority(ticketNumber);
+    
+    TicketSystem.ChangeTicketStatus(ticketNumber, STATUS_WORKING);
+    
+    TicketSystem.CloseTicket(ticketNumber);
 }
