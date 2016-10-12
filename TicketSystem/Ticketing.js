@@ -104,15 +104,4 @@ function guid(small = false) {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
 }
-
-function overloaded(...inputs) {
-    var fns = [];
-    
-    inputs.forEach(f => fns[f.length] = f);
-    
-    return function() {
-        return fns[arguments.length].apply(this, arguments);
-    };
-}
-
 module.export = Ticketing;
