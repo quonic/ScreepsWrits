@@ -77,6 +77,22 @@ class Ticket {
     get requirements() {
         return this.constructor.requirements;
     }
+    
+    /**
+     * Returns this ticket as an Object
+     * @returns {Object}
+     */
+    toObject() {
+        return {
+            tick: this.constructor.tick,
+            owner: this.constructor.owner,
+            task: this.constructor.tasks,
+            requirements: this.constructor.requirements,
+            worker: this.constructor.worker,
+            priority: this.constructor.priority,
+            status: this.constructor.status
+        };
+    }
 }
 
 module.export = Ticket;
