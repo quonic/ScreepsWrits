@@ -9,16 +9,15 @@ module.exports.loop = function () {
     let workerTaskList = [TASK_FILL_SPAWN, TASK_FILL_STORAGE, TASK_IDLE];
     
     let ticket = new Ticket("Spawn1", 1, workerTaskList, workerBodyReq);
-    let n = ticket.number;
     
     TicketSystem.CreateTicket(ticket);
     
-    ticket = TicketSystem.GetTicket(ticketNumber);
+    let ticketNumber = TicketSystem.FindTicketsForOwner("Spawn1");
     
+    ticket = TicketSystem.GetTicket(ticketNumber);
+    console.log(ticket.owner);
     TicketSystem.IncreasePriority(ticketNumber);
     TicketSystem.DecreasePriority(ticketNumber);
-    
     TicketSystem.ChangeTicketStatus(ticketNumber, STATUS_WORKING);
-    
     TicketSystem.CloseTicket(ticketNumber);
 }
