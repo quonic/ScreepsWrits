@@ -20,18 +20,30 @@ class Ticketing {
     };
     
     /**
+     * Return tickets from owner
+     * @param {string} owner
+     * @returns {*}
+     * @constructor
+     */
+    FindTicketsForOwner(owner) {
+        return _.filter(this.memory, function (ticket) {
+            return ticket.owner === owner;
+        });
+    }
+    
+    /**
      * Create Ticket
      * @param {Ticket} ticket
      * @constructor
      */
     CreateTicket(ticket) {
-            let ticketNumber = guid();
-            if (this.memory[ticketNumber]) {
-                throw new Error("CreateTicket() Ticket already exists! This isn't suppose to happen.")
-            } else {
-                this.memory.set(ticketNumber, ticket.toObject());
-            }
-        };
+        let ticketNumber = guid();
+        if (this.memory[ticketNumber]) {
+            throw new Error("CreateTicket() Ticket already exists! This isn't suppose to happen.")
+        } else {
+            this.memory.set(ticketNumber, ticket.toObject());
+        }
+    };
     
     /**
      * Increase priority - 0 being highest
