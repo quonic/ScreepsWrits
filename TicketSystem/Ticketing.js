@@ -12,11 +12,7 @@ class Ticketing {
      * @constructor
      */
     GetTicket(ticketNumber) {
-        if (ticketNumber) {
-            return this.memory[ticketNumber];
-        } else {
-            throw new Error("GetTicket() Failed to get ticket.");
-        }
+        return Memory2Ticket(ticketNumber);
     };
     
     /**
@@ -98,6 +94,42 @@ class Ticketing {
         }
     }
 }
+
+function Memory2Ticket(TicketNumber) {
+    if (!Memory.tickets.hasOwnProperty(TicketNumber)) {
+        throw new Error(`Memory2Ticket() Ticket ${TicketNumber} does not exist.`);
+    }
+    let TicketMemory = Memory.tickets[TicketNumber];
+    let ticket = {};
+    if (TicketMemory.worker) {
+        ticket.set("worker", TicketMemory.worker);
+    }
+    if (TicketMemory.tasks) {
+        ticket.set("tasks", TicketMemory.tasks);
+    }
+    if (TicketMemory.requirements) {
+        ticket.set("requirements", TicketMemory.requirements);
+    }
+    if (TicketMemory.owner) {
+        ticket.set("owner", TicketMemory.owner);
+    }
+    if (TicketMemory.tick) {
+        ticket.set("tick", TicketMemory.tick);
+    }
+    if (TicketMemory.priority) {
+        ticket.set("priority", TicketMemory.priority);
+    }
+    if (TicketMemory.status) {
+        ticket.set("status", TicketMemory.status);
+    }
+    if (TicketMemory.targets) {
+        ticket.set("targets", TicketMemory.targets);
+    }
+    
+    return {[TicketNumber]: ticket}
+    
+}
+
 /**
  * Generate guid
  * @param small
