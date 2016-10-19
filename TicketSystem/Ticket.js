@@ -95,4 +95,4 @@ class Ticket {
     }
 }
 
-module.export = Ticket;
+module.exports = Ticket;
