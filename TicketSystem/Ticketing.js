@@ -148,4 +148,4 @@ function guid(small = false) {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
 }
-module.export = Ticketing;
+module.exports = Ticketing;
