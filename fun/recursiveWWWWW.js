@@ -11,7 +11,7 @@ function where(){
     when();
 }
 function when(){
-    console.log("Why?");
+    console.log("When?");
     why();
 }
 function why(){
